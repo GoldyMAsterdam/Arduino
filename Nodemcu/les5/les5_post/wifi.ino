@@ -4,13 +4,13 @@
 #include <WiFiClientSecureBearSSL.h>
 
 // WiFi variables
-const char* ssid = "";
-const char* password = "";
+const char* ssid = "Medialab";
+const char* password = "Mediacollege";
 String deviceName;
 
 // POST variables
-const String serverProtocol = "https";
-const String serverIP = "https://38436.hosts2.ma-cloud.nl/duurzaamhuis/post.php"; // Ma cloud url or localhost IP
+const String serverProtocol = "https://";
+const String serverIP = "38436.hosts2.ma-cloud.nl";
 const String serverDirectory = "duurzaamhuis/post.php";
 const uint8_t thumbprint[20] = {0xf8,0x7e,0x63,0xa9,0x4e,0x2b,0xf7,0xfa,0xd7,0xd4,0x60,0xe1,0x20,0x57,0x83,0x5f,0xf8,0x34,0x5b,0x44};
 String URL = "";
@@ -85,6 +85,9 @@ void SendPOST(char message[]) {
     Serial.println("]");
     
     https.end();
+   if(responseCode == 200) {
+    ReadJSON(responseMsg);
+   }
   } else {
     Serial.println("[HTTPS] Could not start POST request...");
   }

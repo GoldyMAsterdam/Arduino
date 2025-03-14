@@ -2,12 +2,16 @@
 #define DHT11ReadDelay 5000
 
 // GLOBAL VARIABLES
-char jsonOut[128]; // JSON output buffer
-float Temperature = -1, Humidity = -1, HeatIndex = -1; // DHT11 sensorwaarden
-int Light = -1; // LDR sensorwaarde
+char jsonOut[256]; 
+float Temperature = -1, Humidity = -1, HeatIndex = -1; 
+int Light = -1; 
 
 void setup() {
   Serial.begin(115200);
+
+  pinMode(D3, OUTPUT);
+  pinMode(D5, OUTPUT);
+  pinMode(D6, OUTPUT);
   
   SetupWifi();
   CheckWifi();
@@ -27,7 +31,6 @@ void loop() {
         
     Serial.println("Sending POST...");
     SendPOST(jsonOut);
-
     previousTime = millis();
   }
 

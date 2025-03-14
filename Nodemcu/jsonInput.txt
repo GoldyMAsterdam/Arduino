@@ -1,0 +1,13 @@
+{
+    "ldr": 613,
+    "dht11": {
+        "Temperature": 20.1,
+        "Humidity": 10.7,
+        "HeatIndex": 161.5
+    },
+    "lights": [
+        false,
+        true,
+        false
+    ]
+}

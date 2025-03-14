@@ -16,7 +16,6 @@ void ReadSensors() {
   Humidity = dht.readHumidity();
   HeatIndex = dht.computeHeatIndex(Temperature, Humidity, false);
   Light = analogRead(LDRPIN);
-  
   Serial.print("Temperature: "); Serial.println(Temperature);
   Serial.print("Humidity: "); Serial.println(Humidity);
   Serial.print("Heat Index: "); Serial.println(HeatIndex);
