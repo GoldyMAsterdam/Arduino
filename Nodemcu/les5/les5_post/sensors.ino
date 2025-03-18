@@ -8,6 +8,7 @@ DHT dht(DHTPIN, DHTTYPE);
 
 void SetupSensors() {
   dht.begin();
+  delay(2000);
 }
 
 void ReadSensors() {
