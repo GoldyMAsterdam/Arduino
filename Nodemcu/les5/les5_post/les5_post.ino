@@ -1,7 +1,6 @@
 #define MAX_UNSIGNED_LONG 4294967295
 #define DHT11ReadDelay 5000
 
-// GLOBAL VARIABLES
 char jsonOut[256]; 
 float Temperature = -1, Humidity = -1, HeatIndex = -1; 
 int Light = -1; 

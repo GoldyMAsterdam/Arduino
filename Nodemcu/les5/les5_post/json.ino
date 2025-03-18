@@ -1,5 +1,4 @@
 #include <ArduinoJson.h>
-// JSON document
 StaticJsonDocument<256> doc; 
 
 const char* password2 = "duurzaamhuisBO"; 

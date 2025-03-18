@@ -4,7 +4,6 @@
 #define DHTTYPE DHT11
 DHT dht(DHTPIN, DHTTYPE);
 
-// LDR instelling
 #define LDRPIN A0
 
 void SetupSensors() {
