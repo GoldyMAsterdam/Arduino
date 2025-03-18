@@ -1,21 +1,19 @@
 #include <ArduinoJson.h>
 // JSON document
-StaticJsonDocument<256> doc; // Vergroot voor het wachtwoord
+StaticJsonDocument<256> doc; 
 
-// Wachtwoord voor beveiliging
-const char* password = "duurzaamhuisBO"; // Nieuw wachtwoord
+const char* password2 = "duurzaamhuisBO"; 
 
 void CreateJSON() {
   doc["ldr"] = String(Light);
   doc["dht11"]["Temperature"] = String(Temperature);
   doc["dht11"]["Humidity"] = String(Humidity);
   doc["dht11"]["HeatIndex"] = String(HeatIndex);
-  doc["password"] = password; // Voeg het wachtwoord toe aan de JSON
+  doc["password"] = password2;
   serializeJson(doc, jsonOut);
 }
 
 void ReadJSON(String resJSON) {
-  // remove "response: " from resJSON
   resJSON.remove(0,9);
   StaticJsonDocument<200> resDoc;
   deserializeJson(resDoc, resJSON);
@@ -24,7 +22,6 @@ void ReadJSON(String resJSON) {
   digitalWrite(D6, bool(resDoc["lights"][2]));
 }
 
-// JSON debug naar Serial Monitor
 void SendJSONToSerial() {
   serializeJson(doc, Serial);
   Serial.println();

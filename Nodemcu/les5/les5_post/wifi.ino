@@ -1,14 +1,11 @@
-// WiFi libraries
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 #include <WiFiClientSecureBearSSL.h>
 
-// WiFi variables
 const char* ssid = "Medialab";
 const char* password = "Mediacollege";
 String deviceName;
 
-// POST variables
 const String serverProtocol = "https://";
 const String serverIP = "38436.hosts2.ma-cloud.nl";
 const String serverDirectory = "duurzaamhuis/post.php";
@@ -23,7 +20,6 @@ void CheckWifi() {
 
 void SetupWifi() {
   WiFi.setSleepMode(WIFI_NONE_SLEEP);
-  // Making sure all NodeMCU's have a different name!
   deviceName = "NodeMCU_" + String(random(0x7FFFFFFF));
   WiFi.hostname(deviceName.c_str());
 
@@ -73,7 +69,6 @@ void SendPOST(char message[]) {
     Serial.println("[HTTPS] POST request: " + String(responseCode));
     Serial.println("[HTTPS] POST " + String(responseMsg));
 
-    // Track package loss & draw a success-rate indicator
     ++packages;
     (responseCode == 200)? ++success : ++loss;   
     float successRate = round(( (double) success / (double) packages)*10000)/100;
